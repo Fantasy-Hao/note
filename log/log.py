@@ -1,7 +1,9 @@
 import logging
+import os
+from datetime import datetime
 
 # 记录器
-logger = logging.getLogger('app_log')
+logger = logging.getLogger('log')
 logger.setLevel(logging.DEBUG)
 # setLevel注意：
 # logger默认为warning。StreamHandler和FileHandler如果比warning低，就不会显示，此时需要重新设置logger。
@@ -12,7 +14,11 @@ logger.setLevel(logging.DEBUG)
 consoleHandler = logging.StreamHandler()
 consoleHandler.setLevel(logging.DEBUG)
 
-fileHandler = logging.FileHandler(filename='app_log.log')
+log_dir = os.path.join(os.path.dirname(__file__), 'logs')
+os.makedirs(log_dir, exist_ok=True)
+timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+log_filename = os.path.join(log_dir, f'{timestamp}.log')
+fileHandler = logging.FileHandler(filename=log_filename)
 fileHandler.setLevel(logging.INFO)
 
 # formatter格式

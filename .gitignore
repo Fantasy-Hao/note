@@ -12,14 +12,16 @@ dist/
 # Sphinx documentation
 docs/_build/
 
+# log
+logs/
+*.log
+*.txt
+
 # Jupyter Notebook
 .ipynb_checkpoints
 
 # VSCode
 .vscode/
-
-# setuptools_scm
-deepxde/_version.py
 
 # PyCharm
 .idea/
